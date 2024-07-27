@@ -9,11 +9,11 @@ namespace Assets.Codebase.Infrastructure
     public class AdService : MonoBehaviour
     {
         [DllImport("__Internal")]
-        private static extern void ShowAd();
+        private static extern void ShowAd(int value);
 
-        private void Awake()
+        public void ActivateRewardVideo(int value)
         {
-            ShowAd();
+            ShowAd(value);
         }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Assets.Codebase.UI;
 using Assets.Codebase.Mechanics.PurchaseTime;
 
@@ -18,6 +19,7 @@ namespace Assets.Codebase.Mechanics.Timer
         private void Start()
         {
             Store.SecondsPurchasedEvents += RaiseTime;
+            ChangeUI.ImageChangedEvent += RewindTimer;
             
             _maxTime = _startTime;
 
@@ -40,6 +42,10 @@ namespace Assets.Codebase.Mechanics.Timer
         public void ResetTimer()
         {
             _timer = 0;
+        }
+        public void RewindTimer(Sprite sprite)
+        {
+            _maxTime = _startTime;
         }
         public bool SetActiveTimer
         {

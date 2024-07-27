@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Assets.Codebase.Mechanics.CoinReward
 {
     public class Coin : MonoBehaviour,ICoin
     {
+        [DllImport("__Internal")]
+        private static extern void CheckCoins(int value);
+
         [SerializeField]
         private int _coins;
 
@@ -17,6 +21,7 @@ namespace Assets.Codebase.Mechanics.CoinReward
         public void AddCoins(int coins)
         {
             _coins += coins;
+            CheckCoins(coins);
         }
         public bool SpentCoins(int coins)
         {
